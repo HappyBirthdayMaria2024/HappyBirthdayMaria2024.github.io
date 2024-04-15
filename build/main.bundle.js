@@ -44,7 +44,6 @@ var CanvasController = /*#__PURE__*/function (_Controller) {
     if (height == null) {
       height = _this.canvas.height;
     }
-
     /** @type {CanvasRenderingContext2D} */
     _this.context = _this.canvas.getContext('2d');
     _this.width = width;
@@ -977,7 +976,6 @@ for (var i = 0; i < _circle_thing_js__WEBPACK_IMPORTED_MODULE_0__.dataLength; i+
     y: sumY
   });
 }
-// console.log(points);
 var Pencil = /*#__PURE__*/function () {
   function Pencil() {
     _classCallCheck(this, Pencil);
@@ -1098,6 +1096,33 @@ var PointBuffer = /*#__PURE__*/function () {
 
 /***/ }),
 
+/***/ "./js/setup.js":
+/*!*********************!*\
+  !*** ./js/setup.js ***!
+  \*********************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   setup: () => (/* binding */ setup)
+/* harmony export */ });
+function setup() {
+  function handler() {
+    var parentContainer = document.querySelector('#main-container');
+    parentContainer.classList.remove('width-greater');
+    parentContainer.classList.remove('height-greater');
+    if (parentContainer.clientWidth > parentContainer.clientHeight) {
+      parentContainer.classList.add('width-greater');
+    } else {
+      parentContainer.classList.add('height-greater');
+    }
+  }
+  handler();
+  window.addEventListener('resize', handler);
+}
+
+/***/ }),
+
 /***/ "./data/fft-data.json":
 /*!****************************!*\
   !*** ./data/fft-data.json ***!
@@ -1173,45 +1198,17 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _conductor_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./conductor.js */ "./js/conductor.js");
 /* harmony import */ var _infinity_controller_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./infinity-controller.js */ "./js/infinity-controller.js");
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./setup.js */ "./js/setup.js");
+
 
 
 function hasElement(id) {
   return document.getElementById(id) != null;
 }
-
-/**
- * Configure the canvases to be able to handle screens with higher dpi.
- *
- * We can only call this once because after that, the width has changed!
- */
-function updateCanvasSizes() {
-  var pixelRatio = window.devicePixelRatio || 1;
-  var canvases = document.getElementsByTagName("canvas");
-  var _iterator = _createForOfIteratorHelper(canvases),
-    _step;
-  try {
-    for (_iterator.s(); !(_step = _iterator.n()).done;) {
-      var canvas = _step.value;
-      var width = canvas.width;
-      var height = canvas.height;
-      canvas.width = width * pixelRatio;
-      canvas.height = height * pixelRatio;
-      canvas.style.width = width + 'px';
-      canvas.style.height = height + 'px';
-    }
-  } catch (err) {
-    _iterator.e(err);
-  } finally {
-    _iterator.f();
-  }
-}
-updateCanvasSizes();
 var conductor = null;
 function init() {
   var controllers = [];
+  (0,_setup_js__WEBPACK_IMPORTED_MODULE_2__.setup)();
   if (hasElement('self-draw')) {
     var controller = new SelfDrawController('self-draw');
     controllers.push(controller);

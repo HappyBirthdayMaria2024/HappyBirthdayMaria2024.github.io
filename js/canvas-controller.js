@@ -13,7 +13,6 @@ export default class CanvasController extends Controller {
         if (height == null) {
             height = this.canvas.height;
         }
-
         /** @type {CanvasRenderingContext2D} */
         this.context = this.canvas.getContext('2d');
         this.width = width;

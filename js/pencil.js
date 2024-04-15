@@ -22,7 +22,6 @@ for (let i = 0; i < dataLength; i ++) {
     }
     points.push({x:sumX, y:sumY});
 }
-// console.log(points);
 
 export default class Pencil {
 
