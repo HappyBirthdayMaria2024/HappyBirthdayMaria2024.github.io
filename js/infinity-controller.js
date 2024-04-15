@@ -25,16 +25,16 @@ export default class InfinityController extends CanvasController {
         this.elapsedTime = 0;
 
         this.events = [];
-        this.addEvent({ start: 0, end: 3, func: s => this.updateCircleDrawing(s) });
-        this.addEvent({ start: 3, end: 4, func: s => this.updateHandDisappear(s) });
+        this.addEvent({ start: 0, end: 5, func: s => this.updateCircleDrawing(s) });
+        this.addEvent({ start: 5, end: 6, func: s => this.updateHandDisappear(s) });
 
         this.addEvent({
-            start: 4, end: 6, begin_func: () => {
+            start: 6, end: 10, begin_func: () => {
                 document.querySelector('body').classList.add('colorful');
             }
         })
 
-        let tmp_time = 4;
+        let tmp_time = 6.2;
         const eps_time = 0.1; // hacky
         const time_to_draw_one = 4;
         for (let i = 0; i < fftData.length; i++) {

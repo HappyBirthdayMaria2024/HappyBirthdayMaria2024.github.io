@@ -719,26 +719,26 @@ var InfinityController = /*#__PURE__*/function (_CanvasController) {
     _this.events = [];
     _this.addEvent({
       start: 0,
-      end: 3,
+      end: 5,
       func: function func(s) {
         return _this.updateCircleDrawing(s);
       }
     });
     _this.addEvent({
-      start: 3,
-      end: 4,
+      start: 5,
+      end: 6,
       func: function func(s) {
         return _this.updateHandDisappear(s);
       }
     });
     _this.addEvent({
-      start: 4,
-      end: 6,
+      start: 6,
+      end: 10,
       begin_func: function begin_func() {
         document.querySelector('body').classList.add('colorful');
       }
     });
-    var tmp_time = 4;
+    var tmp_time = 6.2;
     var eps_time = 0.1; // hacky
     var time_to_draw_one = 4;
     var _loop = function _loop(i) {
@@ -1222,7 +1222,23 @@ function init() {
   // To let me play around with things in the console.
   window.conductor = conductor;
 }
-init();
+
+// init();
+
+var mainContainer = document.querySelector("#main-container");
+var startButton = document.querySelector("#start-button");
+startButton.onclick = function () {
+  playMusic();
+  mainContainer.removeChild(startButton);
+  setTimeout(init, 500);
+};
+function playMusic() {
+  var audioElement = document.createElement('audio');
+  audioElement.src = './assets/The-Lonely-Shepherd.mp3';
+  audioElement.autoplay = true;
+  audioElement.loop = true;
+  document.body.appendChild(audioElement);
+}
 })();
 
 /******/ })()

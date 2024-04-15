@@ -28,4 +28,20 @@ function init() {
     window.conductor = conductor;
 }
 
-init();
+// init();
+
+const mainContainer = document.querySelector("#main-container");
+const startButton = document.querySelector("#start-button");
+startButton.onclick = ()=>{
+    playMusic();
+    mainContainer.removeChild(startButton);
+    setTimeout(init, 500);
+};
+
+function playMusic() {
+    const audioElement = document.createElement('audio');
+    audioElement.src = './assets/The-Lonely-Shepherd.mp3';
+    audioElement.autoplay = true;
+    audioElement.loop = true;
+    document.body.appendChild(audioElement);
+}

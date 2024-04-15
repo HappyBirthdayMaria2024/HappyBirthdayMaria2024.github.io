@@ -84,3 +84,28 @@ body.colorful::before {
         transform: scale(1.1) rotate(-360deg); /* Final position and rotation */
     }
 }
+
+.styled-button {
+    display: inline-block;
+    padding: 20px 40px; /* Adjust padding to increase button size */
+    font-size: 20px; /* Adjust font size to make text larger */
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #ffffff;
+    background-color: #4CAF50;
+    border: 2px solid #4CAF50;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none; /* Remove underline if used as a link */
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.styled-button:hover {
+    background-color: #45a049;
+    border-color: #45a049;
+}
+
+.styled-button:active {
+    background-color: #3e8e41;
+    border-color: #3e8e41;
+}
